@@ -13,8 +13,15 @@
 				"MS-CEINTL.vscode-language-pack-ja",
 				"saikou9901.evilinspector",
 				"WolfiesHorizon.python-auto-venv",
-				"oderwat.indent-rainbow"
+				"oderwat.indent-rainbow",
+				"ms-dotnettools.csdevkit",
+				"ms-dotnettools.csharp"
 			]
+		}
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/dotnet:2": {
+			"version": "latest"
 		}
 	}
 
