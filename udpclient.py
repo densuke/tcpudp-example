@@ -7,6 +7,8 @@ import socket
 
 # ソケットの作成
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        # sock.AF_INET: インターネット(IPv4)を使う
+        # sock.SOCK_DGRAM: UDPを使う
 sock.settimeout(1) # データが来ないとずっと待つのでタイムアウトを設定
 
 # メッセージの送信
