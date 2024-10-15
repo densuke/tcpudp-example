@@ -7,6 +7,7 @@ import socket
 
 # ソケットの作成
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+sock.settimeout(1) # データが来ないとずっと待つのでタイムアウトを設定
 
 # メッセージの送信
 sock.sendto(b"Hello, World!", ('localhost', 9999))
