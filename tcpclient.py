@@ -32,6 +32,7 @@ except Exception as e:
 
 # ソケットの作成
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    #IPv4でストリームを作成 → これがTCPのこと(TCPソケット)
 sock.connect(('localhost', 9999))
 
 sock.sendall(name.encode('utf-8'))
@@ -40,7 +41,7 @@ sock.sendall(name.encode('utf-8'))
 message = sock.recv(8192)
 print(f"Received {len(message)} bytes")
 print(f"Message: {message.decode('utf-8')}")
-response = json.loads(message)
+response = json.loads(message) # JSON形式を変換しておく
 print(f"Original Message: {response['original_message']}")
 print(f"Message Length: {response['message_length']}")
 print(f"Encoded Message: {response['encoded_message']}")

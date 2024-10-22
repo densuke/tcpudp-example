@@ -37,6 +37,7 @@ while True:
         "encoded_message": base64.b64encode(message).decode('utf-8'),
         "received_time": time.time()
     }
+    # シリアライズ(serializatioin): 直列化とも言われる
     connection.sendall(json.dumps(response).encode('utf-8'))
 
     # クライアントとの接続をクローズ
