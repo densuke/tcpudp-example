@@ -9,7 +9,19 @@ import requests
 import argparse
 
 def fetch(url):
-    r = requests.get(url)
+
+    try:
+        r = requests.get(url)
+        r.raise_for_status()
+    except requests.exceptions.HTTPError as http_err:
+        if 400 <= r.status_code < 500:
+            print(f"Client error: {r.status_code} - {http_err}", file=sys.stderr)
+        elif 500 <= r.status_code < 600:
+            print(f"Server error: {r.status_code} - {http_err}", file=sys.stderr)
+        return
+    except Exception as err:
+        print(f"Other error occurred: {err}", file=sys.stderr)
+        return
     if r.status_code == 200:
         if 'text' in r.headers['Content-Type']:
             print(r.text)
