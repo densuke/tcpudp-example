@@ -25,7 +25,7 @@ def fetch(url):
     if r.status_code == 200:
         if 'text' in r.headers['Content-Type']:
             print(r.text)
-            pass
+
         else:
             print("Not text: " + r.headers['Content-Type'], file=sys.stderr)
     elif r.status_code in (301, 303):
