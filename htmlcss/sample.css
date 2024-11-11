@@ -1,0 +1,11 @@
+ /* h1タグを太字、1pxの囲み付き、文字色を赤にする */
+ h1 {
+     font-weight: bold;
+     border: 1px solid;
+     color: red;
+ }
+
+ /* pタグは1行目冒頭に0.5emの字下げ */
+ p {
+     text-indent: 0.5em;
+ }
