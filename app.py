@@ -5,6 +5,7 @@
 from flask import Flask, request
 import sys
 import logging
+from numba import njit
 
 app = Flask(__name__)
 
@@ -25,6 +26,23 @@ def echo():
     log.info(f"input: '{data}'")
     # 逆さまにして返す
     return data[::-1] + '\n'
+
+@njit
+def _isprime(number: int) -> bool:
+    if number < 2:
+        return False
+    for i in range(2, number//2):
+        if number % i == 0:
+            return False
+    return True
+
+
+# /isprime/数字 → 素数判定
+@app.route('/isprime/<number>')
+def isprime(number):
+    if _isprime(int(number)):
+        return 'True'
+    return 'False'
 
 if __name__ == '__main__':
     app.run()
